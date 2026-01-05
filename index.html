@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sultanahmet Sofrası</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>Sultanahmet Sofrası</h1>
+  <p class="sub">QR Menü & Sipariş • Ödeme Kasada</p>
+</header>
+
+<!-- 🧾 SİPARİŞ BİLGİLERİ -->
+<div class="order-info">
+
+  <label>Siparişi Giren (Garson / Müşteri)</label>
+  <input
+    type="text"
+    id="personName"
+    placeholder="Adınızı yazınız"
+    required
+  >
+
+  <label>Masa Seçiniz</label>
+  <select id="tableNo" required>
+    <option value="">Masa Seçiniz</option>
+    <option>Kış Bahçesi 1</option>
+    <option>Kış Bahçesi 2</option>
+    <option>Kış Bahçesi 3</option>
+    <option>Kış Bahçesi 4</option>
+    <option>Kış Bahçesi 5</option>
+    <option>Şark Sofrası 1</option>
+    <option>Şark Sofrası 2</option>
+    <option>Şark Sofrası 3</option>
+    <option>Şark Sofrası 4</option>
+    <option>Aile Bölümü 1</option>
+    <option>Aile Bölümü 2</option>
+    <option>Aile Bölümü 3</option>
+    <option>Aile Bölümü 4</option>
+    <option>Aile Bölümü 5</option>
+    <option>Aile Bölümü 6</option>
+  </select>
+
+</div>
+
+<!-- 🔴 MENÜ (ÇOK KRİTİK) -->
+<div id="menu"></div>
+
+<h2>🤍 Destek Ol</h2>
+<div class="product support">
+  <h3>Talebe İkram Bedeli</h3>
+  <p>250 TL</p>
+  <button onclick="addSupport()">Destek Ol</button>
+</div>
+
+<div class="cart-fixed">
+  <div id="cart"></div>
+  <div class="cart-bottom">
+    <b>Toplam: <span id="total">0</span> TL</b>
+    <button onclick="sendOrder()">Siparişi Gönder</button>
+  </div>
+</div>
+
+<p id="msg"></p>
+
+<!-- 🔥 GOOGLE SHEETS POST FORM -->
+<form id="orderForm"
+  action="https://script.google.com/macros/s/AKfycbxnoB7akQvj1BvvNrODddu1CDtRpzGKQ1Z9pBh05O2wWL1hyyHv6JzyXzqQkSiuCwyE/exec"
+  method="POST"
+  target="hidden_iframe"
+  style="display:none;">
+
+  <input name="table" id="f_table">
+  <input name="foods" id="f_foods">
+  <input name="person" id="f_person">
+  <input name="support" id="f_support">
+  <input name="total" id="f_total">
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script src="script.js"></script>
+</body>
+</html>
