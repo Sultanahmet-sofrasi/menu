@@ -91,17 +91,45 @@ function renderTotal(){
 }
 
 function sendOrder(){
-  if(!personName.value) return alert("İsim gerekli");
-  if(!tableNo.value) return alert("Masa seçiniz");
-  if(Object.keys(cart).length===0) return alert("Sepet boş");
+  const person = document.getElementById("personName").value.trim();
+  const table = document.getElementById("tableNo").value;
+  const note  = document.getElementById("orderNote").value.trim();
+  const totalEl = document.getElementById("total");
 
-  f_person.value = personName.value;
-  f_table.value = tableNo.value;
-  f_note.value = orderNote.value || "-";
-  f_foods.value = Object.entries(cart)
-    .map(([k,v])=>`${k} (${v})`).join(", ");
-  f_total.value = total.innerText+" TL";
+  if(!person){
+    alert("İsim gerekli");
+    return;
+  }
 
-  orderForm.submit();
-  msg.innerText = "Sipariş alındı. Ödeme kasada.";
+  if(!table){
+    alert("Masa seçiniz");
+    return;
+  }
+
+  if(Object.keys(cart).length === 0){
+    alert("Sepet boş");
+    return;
+  }
+
+  document.getElementById("f_person").value = person;
+  document.getElementById("f_table").value  = table;
+  document.getElementById("f_note").value   = note || "-";
+
+  document.getElementById("f_foods").value =
+    Object.entries(cart)
+      .map(([name,qty]) => `${name} (${qty})`)
+      .join(", ");
+
+  document.getElementById("f_total").value =
+    totalEl.innerText + " TL";
+
+  document.getElementById("orderForm").submit();
+
+  document.getElementById("msg").innerText =
+    "Sipariş alındı. Ödeme kasada.";
+
+  // 🔄 sıfırla
+  cart = {};
+  document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
+  totalEl.innerText = "0";
 }
