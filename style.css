@@ -1,25 +1,59 @@
-/* 🔽 KATEGORİ KAPALI */
-.hide {
-  display: none;
+body{
+  font-family: Georgia, serif;
+  background:#f7f2e7;
+  color:#3b2f2f;
+  padding-bottom:100px;
 }
 
-/* 🟩 YATAY ÜRÜN KARTI */
-.menu-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
+.header{text-align:center}
+h1{color:#7b1e1e}
+.sub{font-style:italic}
+
+.order-info{
+  background:#fffaf0;
+  border:2px solid #c9a24d;
+  border-radius:12px;
+  padding:50px;
+  margin:30px;
 }
 
-/* ➕➖ DAHA BÜYÜK BUTON */
-.qty-box button {
-  width: 40px;
-  height: 40px;
-  font-size: 22px;
+label{font-weight:bold;margin-top:10px;display:block}
+input,select,textarea{
+  width:100%;padding:10px;border-radius:8px;
+  border:1px solid #c9a24d;
 }
 
-/* ✅ SEÇİLİ ÜRÜN */
-.menu-item.selected {
-  background: #fff3e6;
-  border-color: #7b1e1e;
+.cat{
+  margin:20px 15px 5px;
+  border-bottom:2px solid #c9a24d;
+  color:#7b1e1e;
+  cursor:pointer;
+}
+
+.cat-body{display:none}
+.cat-body.open{display:block}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 15px;
+  border-bottom:1px dotted #c9a24d;
+}
+
+.name{font-weight:bold}
+.price{font-size:14px}
+
+.qty button{
+  width:32px;height:32px;border-radius:50%;
+  border:none;background:#7b1e1e;color:#fff;
+}
+.qty span{margin:0 8px;font-weight:bold}
+
+.cart-fixed{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#fffaf0;
+  border-top:3px solid #c9a24d;
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
 }
