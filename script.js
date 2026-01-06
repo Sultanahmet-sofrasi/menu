@@ -70,10 +70,13 @@ function changeQty(index, delta){
 
   if(!found && delta > 0){
     cart.push({ name:item.name, price:item.price, qty:1 });
-  } else if(found){
+    found = cart.find(p => p.name === item.name); // 🔴 KRİTİK SATIR
+  } 
+  else if(found){
     found.qty += delta;
     if(found.qty <= 0){
       cart = cart.filter(p => p.name !== item.name);
+      found = null;
     }
   }
 
