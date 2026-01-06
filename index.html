@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sultanahmet Sofrası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,79 +13,52 @@
   <p class="sub">QR Menü & Sipariş • Ödeme Kasada</p>
 </header>
 
-<!-- 🧾 SİPARİŞ BİLGİLERİ -->
 <div class="order-info">
-
   <label>Misafir Adı</label>
-  <input
-    type="text"
-    id="personName"
-    placeholder="Adınızı yazınız"
-    required
-  >
+  <input id="personName" placeholder="Adınızı yazınız">
 
-  <label>Masa Seçiniz</label>
-  <select id="tableNo" required>
-    <option value="">Masa Seçiniz</option>
-    <option>Kış Bahçesi 1</option>
-    <option>Kış Bahçesi 2</option>
-    <option>Kış Bahçesi 3</option>
-    <option>Kış Bahçesi 4</option>
-    <option>Kış Bahçesi 5</option>
-    <option>Şark Sofrası 1</option>
-    <option>Şark Sofrası 2</option>
-    <option>Şark Sofrası 3</option>
-    <option>Şark Sofrası 4</option>
-    <option>Aile Bölümü 1</option>
-    <option>Aile Bölümü 2</option>
-    <option>Aile Bölümü 3</option>
-    <option>Aile Bölümü 4</option>
-    <option>Aile Bölümü 5</option>
-    <option>Aile Bölümü 6</option>
-  </select>
+  <select id="tableNo" class="table-select">
+  <option value="">Masa Seçiniz</option>
 
-  <!-- 📝 SİPARİŞ NOTU (YENİ) -->
-  <label>Sipariş Notu (İsteğe Bağlı)</label>
-  <textarea
-    id="orderNote"
-    placeholder="Örn: Lahmacun acısız, köfte paket olsun"
-    rows="3"
-  ></textarea>
+  <option>Kış Bahçesi 1</option>
+  <option>Kış Bahçesi 2</option>
+  <option>Kış Bahçesi 3</option>
+  <option>Kış Bahçesi 4</option>
+  <option>Kış Bahçesi 5</option>
 
+  <option>Şark Sofrası 1</option>
+  <option>Şark Sofrası 2</option>
+  <option>Şark Sofrası 3</option>
+  <option>Şark Sofrası 4</option>
+
+  <option>Aile Bölümü 1</option>
+  <option>Aile Bölümü 2</option>
+  <option>Aile Bölümü 3</option>
+  <option>Aile Bölümü 4</option>
+  <option>Aile Bölümü 5</option>
+  <option>Aile Bölümü 6</option>
+  <option>Aile Bölümü 7</option>
+</select>
+
+  <label>Sipariş Notu</label>
+  <textarea id="orderNote" rows="3"
+    placeholder="Örn: Lahmacun acısız, köfte paket olsun"></textarea>
 </div>
 
-<!-- 🔴 MENÜ -->
 <div id="menu"></div>
 
-<h2>🤍 Destek Ol</h2>
-<div class="product support">
-  <h3>Talebe İkram Bedeli</h3>
-  <p>250 TL</p>
-  <button onclick="addSupport()">Destek Ol</button>
-</div>
-
 <div class="cart-fixed">
-  <div id="cart"></div>
-  <div class="cart-bottom">
-    <b>Toplam: <span id="total">0</span> TL</b>
-    <button onclick="sendOrder()">Siparişi Gönder</button>
-  </div>
+  <span><b>Toplam:</b> <span id="total">0</span> TL</span>
+  <button onclick="sendOrder()">Siparişi Gönder</button>
 </div>
 
 <p id="msg"></p>
 
-<!-- 🔥 GOOGLE SHEETS POST FORM -->
-<form id="orderForm"
-  action="https://script.google.com/macros/s/AKfycbwPzhYvcfynIUpO78-VTljsbpQiticA6YglusYTI6_7ycL9AjWs1xC7d9QOraheG2yJ/exec"
-  method="POST"
-  target="hidden_iframe"
-  style="display:none;">
-
+<form id="orderForm" action="GOOGLE_SCRIPT_URL" method="POST" target="hidden_iframe" style="display:none;">
   <input name="table" id="f_table">
   <input name="foods" id="f_foods">
   <input name="note" id="f_note">
   <input name="person" id="f_person">
-  <input name="support" id="f_support">
   <input name="total" id="f_total">
 </form>
 
