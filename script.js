@@ -35,12 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let grid;
 
   menuData.forEach((item, i) => {
+
     if(item.cat !== currentCat){
       currentCat = item.cat;
 
       const h = document.createElement("h2");
       h.className = "cat";
       h.innerText = currentCat;
+      h.onclick = () => grid.classList.toggle("hide");
       menu.appendChild(h);
 
       grid = document.createElement("div");
@@ -49,9 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     grid.innerHTML += `
-      <div class="menu-item">
-        <div class="menu-name">${item.name}</div>
-        <div class="menu-price">${item.price} TL</div>
+      <div class="menu-item" id="item-${i}">
+        <div class="menu-top">
+          <div class="menu-name">${item.name}</div>
+          <div class="menu-price">${item.price} TL</div>
+        </div>
 
         <div class="qty-box">
           <button onclick="changeQty(${i}, -1)">−</button>
@@ -70,8 +74,8 @@ function changeQty(index, delta){
 
   if(!found && delta > 0){
     cart.push({ name:item.name, price:item.price, qty:1 });
-    found = cart.find(p => p.name === item.name); // 🔴 KRİTİK SATIR
-  } 
+    found = cart.find(p => p.name === item.name);
+  }
   else if(found){
     found.qty += delta;
     if(found.qty <= 0){
@@ -80,8 +84,10 @@ function changeQty(index, delta){
     }
   }
 
-  document.getElementById("qty-" + index).innerText =
-    found ? found.qty : 0;
+  document.getElementById("qty-" + index).innerText = found ? found.qty : 0;
+
+  const card = document.getElementById("item-" + index);
+  found ? card.classList.add("selected") : card.classList.remove("selected");
 
   renderCart();
 }
@@ -94,17 +100,18 @@ function addSupport(){
   renderCart();
 }
 
-/* 🧺 SEPET */
+/* 🧺 SEPET – SADE ÖZET */
 function renderCart(){
   const box = document.getElementById("cart");
-  box.innerHTML = "";
   let total = 0;
+  let count = 0;
 
   cart.forEach(p => {
     total += p.price * p.qty;
-    box.innerHTML += `<p>${p.name} × ${p.qty} = ${p.price * p.qty} TL</p>`;
+    count += p.qty;
   });
 
+  box.innerHTML = `<p>${count} ürün seçildi</p>`;
   document.getElementById("total").innerText = total;
 }
 
@@ -133,5 +140,6 @@ function sendOrder(){
   cart = [];
   renderCart();
   document.querySelectorAll("[id^='qty-']").forEach(e=>e.innerText="0");
+  document.querySelectorAll(".menu-item").forEach(e=>e.classList.remove("selected"));
   msg.innerText = "Sipariş alındı. Ödeme kasada.";
 }
