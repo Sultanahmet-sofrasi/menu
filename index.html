@@ -10,35 +10,32 @@
 
 <header class="header">
   <h1>Sultanahmet Sofrası</h1>
-  <p class="sub">QR Menü & Sipariş • Ödeme Kasada</p>
+  <p class="sub">QR Menü & Sipariş •</p>
 </header>
 
 <div class="order-info">
   <label>Misafir Adı</label>
   <input id="personName" placeholder="Adınızı yazınız">
 
-  <select id="tableNo" class="table-select">
-  <option value="">Masa Seçiniz</option>
-
-  <option>Kış Bahçesi 1</option>
-  <option>Kış Bahçesi 2</option>
-  <option>Kış Bahçesi 3</option>
-  <option>Kış Bahçesi 4</option>
-  <option>Kış Bahçesi 5</option>
-
-  <option>Şark Sofrası 1</option>
-  <option>Şark Sofrası 2</option>
-  <option>Şark Sofrası 3</option>
-  <option>Şark Sofrası 4</option>
-
-  <option>Aile Bölümü 1</option>
-  <option>Aile Bölümü 2</option>
-  <option>Aile Bölümü 3</option>
-  <option>Aile Bölümü 4</option>
-  <option>Aile Bölümü 5</option>
-  <option>Aile Bölümü 6</option>
-  <option>Aile Bölümü 7</option>
-</select>
+  <label>Masa Seçiniz</label>
+  <select id="tableNo">
+    <option value="">Masa Seçiniz</option>
+    <option>Kış Bahçesi 1</option>
+    <option>Kış Bahçesi 2</option>
+    <option>Kış Bahçesi 3</option>
+    <option>Kış Bahçesi 4</option>
+    <option>Kış Bahçesi 5</option>
+    <option>Şark Sofrası 1</option>
+    <option>Şark Sofrası 2</option>
+    <option>Şark Sofrası 3</option>
+    <option>Şark Sofrası 4</option>
+    <option>Aile Bölümü 1</option>
+    <option>Aile Bölümü 2</option>
+    <option>Aile Bölümü 3</option>
+    <option>Aile Bölümü 4</option>
+    <option>Aile Bölümü 5</option>
+    <option>Aile Bölümü 6</option>
+  </select>
 
   <label>Sipariş Notu</label>
   <textarea id="orderNote" rows="3"
@@ -54,11 +51,18 @@
 
 <p id="msg"></p>
 
-<form id="orderForm" action="GOOGLE_SCRIPT_URL" method="POST" target="hidden_iframe" style="display:none;">
+<!-- 🔥 GOOGLE SHEETS FORM -->
+<form
+  id="orderForm"
+  action="https://script.google.com/macros/s/AKfycbwPzhYvcfynIUpO78-VTljsbpQiticA6YglusYTI6_7ycL9AjWs1xC7d9QOraheG2yJ/exec"
+  method="POST"
+  target="hidden_iframe"
+  style="display:none;"
+>
   <input name="table" id="f_table">
+  <input name="person" id="f_person">
   <input name="foods" id="f_foods">
   <input name="note" id="f_note">
-  <input name="person" id="f_person">
   <input name="total" id="f_total">
 </form>
 
