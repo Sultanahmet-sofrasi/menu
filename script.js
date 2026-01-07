@@ -128,9 +128,9 @@ function sendOrder(){
   f_table.value  = table;
   f_note.value   = note || "-";
 
-  f_foods.value = Object.entries(cart)
-    .map(([n,q]) => `${n} (${q})`)
-    .join(", ");
+  document.getElementById("f_items").value =
+  JSON.stringify(cart);
+
 
   f_total.value = total.innerText + " TL";
 
