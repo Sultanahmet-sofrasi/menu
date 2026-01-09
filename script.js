@@ -11,7 +11,7 @@ const menuData = [
   { cat:"Izgara Çeşitleri", name:"Tavuk Şiş Porsiyon", price:250 },
   { cat:"Izgara Çeşitleri", name:"Tavuk Şiş Dürüm", price:225 },
   { cat:"Izgara Çeşitleri", name:"Tavuk Kanat Porsiyon", price:250 },
-  { cat:"Izgara Çeşitleri", name:"Izgarada Balık Porsiyon", price:300 },
+  { cat:"Izgara Çeşitleri", name:"Izgarada Balık Porsiyon", price:400 },
 
   { cat:"Lahmacun ve Pideler", name:"Lahmacun", price:100 },
   { cat:"Lahmacun ve Pideler", name:"Karışık Pide", price:300 },
@@ -149,3 +149,4 @@ function sendOrder(){
   document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
   total.innerText = "0";
 }
+
