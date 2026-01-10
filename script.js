@@ -138,7 +138,27 @@ function sendOrder(){
   tableNo.value = "";
   orderNote.value = "";
   cart = {};
+
+
+
+   function testInsert() {
+  const sheet = SpreadsheetApp
+    .openById("1tVZ1oy1I90jPx0Qi7B_EB-9nBZsB6n6g_aShuSJNhfU")
+    .getSheetByName("Siparisler");
+
+  sheet.appendRow([
+    new Date(),
+    "TEST",
+    "TEST MASA",
+    "TEST",
+    "DENEME",
+    "100 TL",
+    "Bekliyor"
+  ]);
+}
+
   document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
   total.innerText = "0";
 }
+
 
