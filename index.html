@@ -1,1 +1,80 @@
-index.html <!DOCTYPE html> <html lang="tr"> <head> <meta charset="UTF-8"> <title>Sultanahmet Sofrası</title> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="style.css"> </head> <body> <header class="header"> <h1>Sultanahmet Sofrası</h1> <p class="sub">QR Menü & Sipariş •</p> </header> <div class="order-info"> <label>Misafir Adı</label> <input id="personName" placeholder="Adınızı yazınız"> <label>Masa Seçiniz</label> <select id="tableNo"> <option value="">Masa Seçiniz</option> <option>Kış Bahçesi 1</option> <option>Kış Bahçesi 2</option> <option>Kış Bahçesi 3</option> <option>Kış Bahçesi 4</option> <option>Kış Bahçesi 5</option> <option>Kış Bahçesi 6</option> <option>Kış Bahçesi 7</option> <option>Kış Bahçesi 8</option> <option>Mescid 9</option> <option>Mescid 10</option> <option>Mescid 11</option> <option>Mescid 12</option> <option>Mescid 13</option> <option>Mescid 14</option> <option>Mescid 15</option> <option>Teras 16</option> <option>Teras 17</option> <option>Teras 18</option> <option>Teras 19</option> <option>Teras 20</option> </select> <label>Sipariş Notu</label> <textarea id="orderNote" rows="3" placeholder="Örn: Lahmacun acısız, köfte paket olsun"></textarea> </div> <div id="menu"></div> <div class="cart-fixed"> <span><b>Toplam:</b> <span id="total">0</span> TL</span> <button onclick="sendOrder()">Siparişi Gönder</button> </div> <p id="msg"></p> <!-- 🔥 GOOGLE SHEETS FORM --> <form id="orderForm" action="https://script.google.com/macros/s/AKfycbza7nK-W_YqEPHeLyu30MfuouzvlgGFRdz9a8Sll9MmHU4V4dmdJCiIgY1wkwtPlmGf/exec" method="POST" target="hidden_iframe" style="display:none;" > <input name="table" id="f_table"> <input name="person" id="f_person"> <input name="foods" id="f_foods"> <input name="note" id="f_note"> <input name="total" id="f_total"> <input name="items" id="f_items"> </form> <iframe name="hidden_iframe" style="display:none;"></iframe> <script src="script.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sultanahmet Sofrası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>Sultanahmet Sofrası</h1>
+  <p class="sub">QR Menü & Sipariş •</p>
+</header>
+
+<div class="order-info">
+  <label>Misafir Adı</label>
+  <input id="personName" placeholder="Adınızı yazınız">
+
+  <label>Masa Seçiniz</label>
+  <select id="tableNo">
+    <option value="">Masa Seçiniz</option>
+    <option>Kış Bahçesi 1</option>
+    <option>Kış Bahçesi 2</option>
+    <option>Kış Bahçesi 3</option>
+    <option>Kış Bahçesi 4</option>
+    <option>Kış Bahçesi 5</option>
+    <option>Kış Bahçesi 6</option>
+    <option>Kış Bahçesi 7</option>
+    <option>Kış Bahçesi 8</option>
+    <option>Mescid 9</option>
+    <option>Mescid 10</option>
+    <option>Mescid 11</option>
+    <option>Mescid 12</option>
+    <option>Mescid 13</option>
+    <option>Mescid 14</option>
+    <option>Mescid 15</option>
+    <option>Teras 16</option>
+    <option>Teras 17</option>
+    <option>Teras 18</option>
+    <option>Teras 19</option>
+    <option>Teras 20</option>
+  </select>
+
+  <label>Sipariş Notu</label>
+  <textarea id="orderNote" rows="3"
+    placeholder="Örn: Lahmacun acısız, köfte paket olsun"></textarea>
+</div>
+
+<div id="menu"></div>
+
+<div class="cart-fixed">
+  <span><b>Toplam:</b> <span id="total">0</span> TL</span>
+  <button onclick="sendOrder()">Siparişi Gönder</button>
+</div>
+
+<p id="msg"></p>
+
+<!-- 🔥 GOOGLE SHEETS FORM -->
+<form
+  id="orderForm"
+  action="https://script.google.com/macros/s/AKfycbwVA6le4u-xZWqs9Epk6zZDhjaIL93ZrpZh-grPP_DrfKkni_vJByZktXuVeb3ePPqD/exec"
+  method="POST"
+  target="hidden_iframe"
+  style="display:none;"
+>
+  <input name="table" id="f_table">
+  <input name="person" id="f_person">
+  <input name="foods" id="f_foods">
+  <input name="note" id="f_note">
+  <input name="total" id="f_total">
+  <input name="items" id="f_items">
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script src="script.js"></script>
+</body>
+</html>
