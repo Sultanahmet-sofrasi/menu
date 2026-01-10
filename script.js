@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbze5L0-z-_WhFH12zZM1nZg9fVwfHoLUcO36apOQpVsjfQN4h_B64QRCl0aGqTB7sF4/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwVA6le4u-xZWqs9Epk6zZDhjaIL93ZrpZh-grPP_DrfKkni_vJByZktXuVeb3ePPqD/exec";
 
 const menuData = [
   { cat:"Çorbalar", name:"Mercimek Çorbası", price:100 },
@@ -111,3 +111,4 @@ function sendOrder(){
   document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
   total.innerText = "0";
 }
+
