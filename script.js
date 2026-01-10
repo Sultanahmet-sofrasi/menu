@@ -94,7 +94,7 @@ function sendOrder(){
   data.append("items", JSON.stringify(cart));
   data.append("total", total.innerText + " TL");
 
-  fetch("https://script.google.com/macros/s/AKfycbwm-S1B-61VyNBLqE5umFf3gr8aEShet7hWUVZK1O8wcw7Wes9f6TLKm6yo-ojCfnhZ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbze5L0-z-_WhFH12zZM1nZg9fVwfHoLUcO36apOQpVsjfQN4h_B64QRCl0aGqTB7sF4/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -114,3 +114,4 @@ function sendOrder(){
     alert("Sipariş gönderilemedi");
   });
 }
+
