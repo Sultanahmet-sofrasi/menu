@@ -1,3 +1,5 @@
+const API_URL = "https://script.google.com/macros/s/AKfycbze5L0-z-_WhFH12zZM1nZg9fVwfHoLUcO36apOQpVsjfQN4h_B64QRCl0aGqTB7sF4/exec";
+
 const menuData = [
   { cat:"Çorbalar", name:"Mercimek Çorbası", price:100 },
   { cat:"Çorbalar", name:"Kelle Çorbası", price:150 },
@@ -37,9 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(item.cat !== currentCat){
       currentCat = item.cat;
       const h = document.createElement("h2");
-      h.className = "cat";
-      h.innerHTML = `${currentCat} <span>▼</span>`;
-      h.onclick = () => h.nextElementSibling.classList.toggle("open");
+      h.innerHTML = item.cat;
+      h.onclick = () => body.classList.toggle("open");
 
       body = document.createElement("div");
       body.className = "cat-body open";
@@ -51,10 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
     body.innerHTML += `
       <div class="row">
         <div>
-          <div class="name">${item.name}</div>
-          <div class="price">${item.price} TL</div>
+          <div>${item.name}</div>
+          <div>${item.price} TL</div>
         </div>
-        <div class="qty">
+        <div>
           <button onclick="changeQty(${i},-1)">−</button>
           <span id="q${i}">0</span>
           <button onclick="changeQty(${i},1)">+</button>
@@ -87,31 +88,26 @@ function sendOrder(){
     return;
   }
 
-  const data = new URLSearchParams();
-  data.append("person", personName.value);
-  data.append("table", tableNo.value);
-  data.append("note", orderNote.value || "-");
-  data.append("items", JSON.stringify(cart));
-  data.append("total", total.innerText + " TL");
-
-  fetch("https://script.google.com/macros/s/AKfycbze5L0-z-_WhFH12zZM1nZg9fVwfHoLUcO36apOQpVsjfQN4h_B64QRCl0aGqTB7sF4/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: data
-  })
-  .then(() => {
-    msg.innerText = "Siparişiniz alınmıştır.";
-    personName.value = "";
-    tableNo.value = "";
-    orderNote.value = "";
-    cart = {};
-    document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
-    total.innerText = "0";
-  })
-  .catch(() => {
-    alert("Sipariş gönderilemedi");
+  const data = new URLSearchParams({
+    person: personName.value,
+    table: tableNo.value,
+    note: orderNote.value || "-",
+    items: JSON.stringify(cart),
+    total: total.innerText + " TL"
   });
-}
 
+  fetch(API_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: data
+  });
+
+  msg.innerText = "Siparişiniz alınmıştır ✅";
+
+  personName.value = "";
+  tableNo.value = "";
+  orderNote.value = "";
+  cart = {};
+  document.querySelectorAll("[id^='q']").forEach(e => e.innerText = "0");
+  total.innerText = "0";
+}
